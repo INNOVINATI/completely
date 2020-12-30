@@ -15,3 +15,11 @@ print(measure(data))
 - Lists of strings / ints / floats
 - Lists of dicts
 - Nested lists of one of the above
+
+## Setup
+```bash
+pip install completely
+```
+
+## Contributing
+We're happy about every meaningful contribution to this project via pull requests. If needed, we'll setup more precise guidelines on how to contribute at some point.
