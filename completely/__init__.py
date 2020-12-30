@@ -29,15 +29,3 @@ def measure(ls: list):
         return round(sum([measure(sub_list) / len(ls) for sub_list in ls]), 3)
     if any([t == x for x in (int, float, str)]):
         return _elements(ls)
-
-
-if __name__ == '__main__':
-    test_dicts = [{'a': 1, 'b': []}, {'a': None, 'b': [1, 2]}, {'a': 2, 'b': [4, 5]}]
-    test_lists_simple = [[1, 0, 1, 0, 1, None], [1, 0], [123123123, 1231231231]]
-    test_lists_dicts = [[{'a': 1, 'b': []}], [{'a': None, 'b': [1, 2]}], [{'a': 2, 'b': [4, 5]}]]
-    test_elements = ['a', None, 'b', '', 'c', 'd']
-    scores = []
-    for i, test in enumerate([test_dicts, test_lists_simple, test_lists_dicts, test_elements]):
-        score = measure(test)
-        scores.append((i + 1, score))
-    print(scores)
