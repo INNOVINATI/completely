@@ -7,10 +7,10 @@ def _dicts(ls: List[dict]):
     for element in ls:
         sub_size = len(element)
         abs_score = sum([1 if bool(value) else 0 for value in element.values()])
-        rel_score = round(abs_score / sub_size, 3)
-        total_score += round(rel_score / size, 3)
+        rel_score = abs_score / sub_size
+        total_score += rel_score / size
 
-    return total_score
+    return round(total_score, 3)
 
 
 def _elements(ls: list):
