@@ -12,9 +12,11 @@ print(measure(data))
 ```
 
 **completely** currently works with:
-- Lists of strings / ints / floats
-- Lists of dicts
-- Nested lists of one of the above
+- strings / ints / floats
+- lists
+- sets
+- dicts
+- Nested objects of one of the above
 
 ## Setup
 ```bash

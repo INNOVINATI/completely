@@ -1,31 +1,34 @@
-from typing import List
+def _element(e: object):
+    if e or e == 0:
+        return 1
+    return 0
 
 
-def _dicts(ls: List[dict]):
-    size = len(ls)
-    total_score = 0
-    for element in ls:
-        sub_size = len(element)
-        abs_score = sum([1 if bool(value) else 0 for value in element.values()])
-        rel_score = abs_score / sub_size
-        total_score += rel_score / size
-
-    return round(total_score, 3)
+def _list(l: list):
+    assert l
+    return round(sum((measure(e) for e in l)) / len(l), 3)
 
 
-def _elements(ls: list):
-    size = len(ls)
-    abs_score = sum([1 if (value or value == 0) else 0 for value in ls])
-    return round(abs_score / size, 3)
+def _set(s: set):
+    assert s
+    return _list(list(s))
 
 
-def measure(ls: list):
-    if not len(ls):
-        raise ValueError('Cannot analyze empty list')
-    t = type(ls[0])
-    if t == dict:
-        return _dicts(ls)
-    if t == list:
-        return round(sum([measure(sub_list) / len(ls) for sub_list in ls]), 3)
-    if any([t == x for x in (int, float, str)]):
-        return _elements(ls)
+def _dict(d: dict):
+    assert d
+    return _list(d.values())
+
+
+def measure(o: object):
+    if isinstance(o, (int, float, str)):
+        return _element(o)
+    if not o:
+        return 0
+    if isinstance(o, list):
+        return _list(o)
+    if isinstance(o, set):
+        return _set(o)
+    if isinstance(o, dict):
+        return _dict(o)
+
+    raise ValueError('Cannot analyze')
