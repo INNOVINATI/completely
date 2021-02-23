@@ -31,4 +31,4 @@ def measure(o: object):
     if isinstance(o, dict):
         return _dict(o)
 
-    raise ValueError('Cannot analyze')
+    raise ValueError(f'Cannot handle input of type {type(o)}')
